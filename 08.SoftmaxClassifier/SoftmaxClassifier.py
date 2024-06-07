@@ -58,8 +58,8 @@ optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.5)  # 更好的优
 # ----------------------------------------train test--------------------------------------------------------------------
 def train(epoch):
     for batch_index, data in enumerate(train_loader, 0):
-        # enumerate(train_loader, 0)会返回一个可迭代对象，其中batch_index是迭代的索引，而data是从train_loader加载的数据批次。
-        inputs, target = data  # target 64*1的矩阵，表示是哪一类0到9
+        # enumerate(train_loader, 0)会返回一个可迭代对象，其中batch_index是迭代的索引
+        inputs, target = data  # data是两个tensor组成的列表，第一个tensor四维是数据批次，第二个是个向量，是标签
         outputs = model(inputs)  # 64 * 10的矩阵
         optimizer.zero_grad()
         loss = criterion(outputs, target)
